@@ -4,14 +4,15 @@ from app.services.llm_service import (
     generate_response
 )
 
+from app.schemas.chat import ChatRequest
 router = APIRouter()
 
 
 @router.post("/chat")
-def chat(prompt: str):
+def chat(request: ChatRequest):
 
     response = generate_response(
-        prompt
+    request.prompt
     )
 
     return {
